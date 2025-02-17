@@ -10,7 +10,7 @@ const app = express();
 const PORT = 4000;
 
 const LOW_LIMIT = 1;
-const HIGH_LIMIT = 1000;
+const HIGH_LIMIT = 6012;
 
 
 
