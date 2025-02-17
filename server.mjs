@@ -1,4 +1,5 @@
 "use strict";
+import { error } from "console";
 import express from "express";
 
 
@@ -17,25 +18,41 @@ app.use(express.json());
 
 
 app.get('/random', (req,res) => {
-
-  const {
-    min = 1,
-    max = 1000
+  
+  let {
+    min,
+    max
   } = req.query;
 
-  console.log(min, max)
+  //console.log(min, max)
 
-  
 
-  //const randomNumber = Math.floor(Math.random()*( HIGH_LIMIT - LOW_LIMIT) + LOW_LIMIT );
+  min = min ? parseInt(min) : LOW_LIMIT;
+  max = max ? parseInt(max) : HIGH_LIMIT;
+
+  if (isNaN(min) || isNaN(max) ){
+    
+    return res.status(400).json({
+      error: 'invalid range parameters. Please, please provide valid min and max values.'
+    })
+  }
+
+  if (min >= max) {
+    return res.status(400).json({error: 
+      'Min value should be stricly LESS than max value'
+    })
+  }
+
+
   let rn = Math.random()
   const randomNumber = Math.floor( (rn * (max - min + 1 ) ))+ Math.floor(min);
 
-  console.log( rn, max,min,randomNumber)
+  //console.log( rn, max,min,randomNumber)
   res.status(200).json({
     number: randomNumber 
   })
   console.log(`${randomNumber} was sent`)
+  
 })
 
 
