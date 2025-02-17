@@ -26,20 +26,30 @@
   ### Example Request and Response(Node.js):
 
   fetch("http//localhost/random?min={someLowNumber}&max={someHighNumber}",{
+
     method: "GET",
+
     headers: {
+
       "Accept": "application/json"
+
     }
+
   })
+
   .then(response => respone.json())
+
   .then(data => console.log(data.number));
+  
 
   ### Example Request and Response(Python):
   
   import requests
 
   url = "http://localhost:4000/random"
+
   response = requests.get(url)
+
   print(response.json())  
 
 Note: Ensure the microservice is running on port 4000 before making requests.
