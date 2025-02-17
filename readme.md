@@ -1,26 +1,30 @@
-# microservice written by request of team mate
+# Random Number Microservice
 
-## description:
-  current service provides random number in json format {number: "NUMBER"} by get request.
+## Description:
+  * This microservice provides random numbers via HTTP GET requests.
 
-## prerequisites:
-  * install node v20.12.2
-  * install express 4.21.2
+## Prerequisites:
+  * Install Node v20.12.2
+  * Install Express 4.21.2
 
-## instalation
-  * npm install 
+## Instalation:
+  1. Clone the repository
+  2. Run `npm install` to install dependencies
 
-## run
-  * npm run dev
+## Running the Service
+  * Start the service with: npm run dev
 
-## usage
-  * for get random integer number between 1 and 6012 inclusively use http get request like:
-  "http//localhost/random"
-  * for custom limits use get request: 
-  "http//localhost/random?min={someLowNumber}&max={someHighNumber}"
-  where {someLowNumber} should be stricly less than {someHighNumber}
+## Requesting Data:
 
-  * example ussage for node:
+  * To request a random number between 1 and 6012 inclusively, send a GET request to the following endpoint: "http//localhost/random"
+  * For custom limits, use query parameters: "http//localhost/random?min={someLowNumber}&max={someHighNumber}", where {someLowNumber} should be stricly less than {someHighNumber}
+
+## Receiving Data
+
+  * The microservice responds with JSON in the following format: {"number": 42}
+
+  ### Example Request and Response(Node.js):
+
   fetch("http//localhost/random?min={someLowNumber}&max={someHighNumber}",{
     method: "GET",
     headers: {
@@ -29,4 +33,14 @@
   })
   .then(response => respone.json())
   .then(data => console.log(data.number));
+
+  ### Example Request and Response(Python):
+  
+  import requests
+
+  url = "http://localhost:4000/random"
+  response = requests.get(url)
+  print(response.json())  
+
+Note: Ensure the microservice is running on port 4000 before making requests.
 

@@ -25,7 +25,7 @@ app.get('/random', (req,res) => {
   if (isNaN(min) || isNaN(max) ){
     
     return res.status(400).json({
-      error: 'invalid range parameters. Please, please provide valid min and max values.'
+      error: 'Invalid range parameters. Please, provide valid min and max values.'
     })
   }
 
