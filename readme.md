@@ -41,6 +41,9 @@
   url = "http://localhost:4000/random"
   response = requests.get(url)
   print(response.json())  
-
+  ```
 Note: Ensure the microservice is running on port 4000 before making requests.
 
+## UML sequence diagram
+
+![UML Diagram](uml_diagram.png)
